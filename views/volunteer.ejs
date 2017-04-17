@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include admin/header.ejs %>
+<div class="parallax-container">
+    <div class="parallax"><img src="../images/wallpaper.jpg">
+    </div>
+</div>
+    Volunteer Signup Form
+<div class="row">
+    <form class="col s12" method="post" action="#">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="area" type="" class="validate">
+                <datalist id="areas">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </datalist>
+                <label>AreaList</label>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    jQuery(document).ready(function () {
+        $('.parallax').parallax();
+    });
+</script>
+
+</html>

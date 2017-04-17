@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include admin/header.ejs %>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">The Urban Gardener</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="https://www.google.com/">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="https://www.google.com/"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="https://www.google.com/"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        <!-- /.navbar-header -->
+
+
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+
+
+
+                    <li>
+                        <a id ="btnaqipast" href="#"><i class="fa fa-dashboard fa-fw"></i>Past trends of your area </a>
+                    </li>
+
+                    <li>
+                        <a id="btnaqicompare" href="#"><i class="fa fa-dashboard fa-fw"></i>Compare Past Trends </a>
+                    </li>
+
+                    <li>
+                        <a id="btnaqicurrent" href="#"><i class="fa fa-table fa-fw"></i>Compare Current AQI</a>
+                    </li>
+
+
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-bar-chart-o fa-fw"></i>lol<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="flot.html">Flot Charts</a>
+                            </li>
+                            <li>
+                                <a href="morris.html">Morris.js Charts</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="grid.html">Grid</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="https://www.google.com/">Second Level Item</a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/">Second Level Item</a>
+                            </li>
+                            <li>
+                                <a href="https://www.google.com/">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="https://www.google.com/">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.google.com/">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.google.com/">Third Level Item</a>
+                                    </li>
+
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="blank.html">Blank Page</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Login Page</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Know more about your area: View Air Quality Index</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-12">
+                <div class="btn-group btn-down">
+                    <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-activates='areadropdown'>
+                        Select Area <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" id="areadropdown">
+                        <li id="Golden Gate" value = "Golden Gate"><a href="#">Golden Gate</a></li>
+                        <li id="Napa Valley" value ="Napa Valley"><a href="#">Napa Valley</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>-->
+                    Select Area:
+
+                    <select id='areadropdown'>
+                        <option value="Golden Gate">Golden Gate</option>
+                        <option value="Napa">Napa</option>
+                        <option value="Noe Valley">Noe Valley</option>
+                        <option value="Outer Richmond">Outer Richmond</option>
+                        <option value="Chinatown">Chinatown</option>
+                        <option value="Union Square">Union Square</option>
+                        <option value="Western Addition">Western Addition</option>
+                        <option value="Russian Hill">Russian Hill</option>
+                        <option value="Union Square">Union Square</option>
+                        <option value="Peninsula">Peninsula</option>
+                        <option value="Cole Valley">Cole Valley</option>
+
+                    </select>
+
+
+
+               </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class ="col-md-6">
+                <div class="panel panel-default" id="pastaqi" hidden>
+                    <div class="panel-heading">
+                    Past AQI Trends
+                    </div>
+                    <table width="100%" id="pastaqitable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-6">
+            <div class="panel panel-default" id="mark" hidden>
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Past Trends
+                    <div class="pull-right">
+                        <div class="btn-group">
+
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="https://www.google.com/">Action</a>
+                                </li>
+                                <li><a href="https://www.google.com/">Another action</a>
+                                </li>
+                                <li><a href="https://www.google.com/">Something else here</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="https://www.google.com/">Separated link</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+
+            <div id="linechartparent" hidden>
+
+                <canvas id="myLineChart" class="widgetcanvas"></canvas>
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+
+
+
+
+
+
+    </div>
+
+    <!-- /#page-wrapper -->
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+
+
+<script>
+
+  //  $('.carousel.carousel-slider').carousel({fullWidth: true,noWrap:true});
+    //$('.carousel.carousel-slider').carousel({fullWidth: true});
+
+    jQuery(document).ready(function () {
+
+      //  $('.parallax').parallax();
+
+        // incomplete
+        /*jQuery("#areadropdown").click(function () {
+         $.get('/yourarea/aqi/pasttrends', function (data) {
+         $('#resAQI').val(data.resultobjectlength);
+         });
+         });*/
+
+        jQuery("#btnaqipast").click(function () {
+
+            $("#pastaqi").show();
+            $("#pastaqitable").DataTable;
+           // element.style.visibility = true
+            window.alert(document.getElementById('areadropdown').value);
+            if(document.getElementById('areadropdown').value==undefined){
+                window.alert(document.getElementById('areadropdown').value);
+            }
+
+            //
+``
+            $("#linechartparent").show();
+            $("#mark").show();
+
+            $.get('/yourarea/aqi/pasttrends', {data: document.getElementById('areadropdown').value}, function (data) {
+
+                var dataset = data.chartdata;
+                var xarray=[];
+                var yarray1=[];
+               // var yarray2=[];
+                //var yarray3=[];
+                //var yarray4=[];
+                //var yarray5=[];
+                //var yarray6=[];
+
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                }
+
+                for (var i in data.chartdata)
+                {
+                    xarray.push(data.chartdata[i][2]);
+                }
+
+                chartStepOneAQIPast(xarray,yarray1,charttype);
+
+                $('#pastaqitable').DataTable({
+                    select: true,
+                    active: true,
+                    data: dataset,
+                    ordering:false,
+                    columns: [
+                        {title: "Areas"},
+                        {title: "Current GQ"},
+                        {title: "Month"}
+                    ]
+                });
+            });
+
+
+        });
+
+        jQuery("#btnaqicompare").click(function () {
+
+
+
+            $("#linechartparent").show();
+            $.get('/yourarea/aqi/trendtopfive', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var yarray1=[];
+                var yarray2=[];
+                var yarray3=[];
+                var yarray4=[];
+                var yarray5=[];
+                var yarray6=[];
+                var xarray=[];
+                var charttype ='line';
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                    yarray2.push(data.chartdata[i][2]);
+                    yarray3.push(data.chartdata[i][3]);
+                    yarray4.push(data.chartdata[i][4]);
+                    yarray5.push(data.chartdata[i][5]);
+                    yarray6.push(data.chartdata[i][6]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+
+                chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+
+            });
+
+        });
+
+        jQuery("#btnaqicurrent").click(function () {
+            $("#linechartparent").show();
+            $.get('/yourarea/aqi/currenttopfive', {data: document.getElementById('areadropdown').id}, function (data) {
+                debugger;
+                var xarray=[];
+                var yarray1=[];
+
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+
+                    yarray1.push(data.chartdata[i][1]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+                chartStepOneAQICurrent(xarray,yarray1,charttype);
+            });
+        });
+
+        function chartStepOneAQIPast(xarray,yarray1,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChartAQIPast(xarray,yarray1,charttype);
+        }
+
+        function createChartAQIPast(xarray,yarray1,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            //type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+                        //2
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+        function chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+        }
+
+        function createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                             borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+                        //2
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray2,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //3
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray3,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+
+                        //4
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray4,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+
+                        //5
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray5,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+
+                        //6
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray6,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+
+                        
+
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+        function chartStepOneAQICurrent(xarray,yarray1,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChartAQICurrent(xarray,yarray1,charttype);
+        }
+
+        function createChartAQICurrent(xarray,yarray1,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],
+                              borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],
+                            borderWidth: 1
+                        },
+                        //2
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+    });
+
+
+
+</script>
+</html>

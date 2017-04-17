@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <% include admin/header.ejs %>
+    <div class="carousel carousel-slider center" data-indicators="true" style = "height:200px">
+        <div class="carousel-item small red white-text" href="#one!">
+            <h2>When was California discovered?</h2>
+            <p class="white-text">Portuguese-born João Rodrigues Cabrilho and his chief pilot Bartolomé Ferrelo, were the first Europeans to explore the coast of the present state of California. Sailing for Spain, Cabrilho left in June of 1542 from Navidad on the west coast of Mexico and proceeded north. He reached San Diego Bay in September, becoming the first European to set foot in what is today the state of California. He continued north along the California coast but died in January 1543 from an infection resulting from a broken arm.</p>
+        </div>
+        <div class="carousel-item small amber white-text" href="#two!">
+            <h2>The Bear</h2>
+            <p class="white-text">
+                The bear on the current flag of California is claimed to have been modeled on the last Californian grizzly bear in captivity. The bear, named "Monarch", was captured in 1889 by newspaper reporter Allen Kelley, at the behest of William Randolph Hearst. The bear was later moved to the zoo at Golden Gate Park. After the bear's death in 1911, it was mounted and preserved at the Academy of Sciences at Golden Gate Park</p>
+        </div>
+        <div class="carousel-item small green white-text" href="#three!">
+            <h2>Tallest trees on Earth</h2>
+            <p class="white-text">Hyperion, a coast redwood tree (Sequoia sempervirens) in the Redwood National Park, California, is the tallest living tree in the world at 115.54 meters (379.1 ft) The tree is estimated to contain 530 cubic meters (18,600 cu ft) of wood and to be about 800 years old.
+                The General Sherman, a giant sequoia (Sequoiadendron giganteum) tree located in the Sequoia National Park, California, is the largest living single stem tree on earth. Estimated to be about 2500 year-old, it has a diameter of 7.7 metres (25 ft)</p>
+        </div>
+        <div class="carousel-item small blue white-text" href="#four!">
+            <h2>Gold rush</h2>
+            <p class="white-text">On 24 January 1848, James Marshall, a foreman working to build a lumber mill for John Sutter in Coloma, California, found a shiny lump of gold in the American River. The news triggered a massive rush of gold-seekers (called "forty-niners" as many of them arrived around the year 1849) flocking to California hoping to strike it rich. This 'Goldrush' gave California its nickname, the Golden State</p>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="../images/wallpaper.jpg"></div>
+
+
+        <!--   <div class="carousel carousel-slider">
+               <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
+               <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+               <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+           </div>-->
+
+        <div class="row"> <input type="button" id="btngqpast" value="Past trends of your area" class="waves-effect waves-light btn"/> </div>
+
+        <div class="row"> <input type="button" id="btngqcompare" value="Compare Past Trends" class="waves-effect waves-light btn"/></div>
+
+        <div class="row"> <input type="button" id="btngqcurrent" value="Compare Current GQ" class="waves-effect waves-light btn"/></div>
+
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='areadropdown'>Select Area</a>
+
+        <!-- Dropdown Structure -->
+        <select id='areadropdown' class='dropdown-content'>
+            <option value="Golden Gate">Golden Gate</option>
+            <option value="Napa">Napa</option>
+        </select>
+        <!-- Dropdown Trigger -->
+
+    </div>
+    <!-- Chart -->
+    <div id="linechartparent" hidden >
+        <canvas id="myLineChart" class="widgetcanvas"></canvas>
+    </div>
+
+
+</div>
+</body>
+
+
+
+<script>
+
+    $('.carousel.carousel-slider').carousel({fullWidth: true,noWrap:true});
+    //$('.carousel.carousel-slider').carousel({fullWidth: true});
+
+    jQuery(document).ready(function () {
+
+        $('.parallax').parallax();
+
+        // incomplete
+        /*jQuery("#areadropdown").click(function () {
+         $.get('/yourarea/aqi/pasttrends', function (data) {
+         $('#resAQI').val(data.resultobjectlength);
+         });
+         });*/
+        jQuery("#btngqpast").click(function () {
+           // window.alert(document.getElementById('areadropdown').value);
+            if(document.getElementById('areadropdown').value==undefined){
+                window.alert(document.getElementById('areadropdown').value);
+            }
+
+
+
+
+            $("#linechartparent").show();
+            $.get('/yourarea/gq/pasttrends', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var xarray=[];
+                var yarray1=[];
+                var yarray2=[];
+                var yarray3=[];
+                var yarray4=[];
+                var yarray5=[];
+                var yarray6=[];
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                }
+
+                for (var i in data.chartdata)
+                {
+                    xarray.push(data.chartdata[i][2]);
+                }
+
+                chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+                //$('#tempID').val(data.temperatureValue);
+            });
+
+        });
+
+        jQuery("#btngqcompare").click(function () {
+
+            $("#linechartparent").show();
+            $.get('/yourarea/gq/trendtopfive', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var yarray1=[];
+                var yarray2=[];
+                var yarray3=[];
+                var yarray4=[];
+                var yarray5=[];
+                var yarray6=[];
+                var xarray=[];
+                var charttype ='line';
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                    yarray2.push(data.chartdata[i][2]);
+                    yarray3.push(data.chartdata[i][3]);
+                    yarray4.push(data.chartdata[i][4]);
+                    yarray5.push(data.chartdata[i][5]);
+                    yarray6.push(data.chartdata[i][6]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+
+                chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+
+            });
+
+        });
+
+        jQuery("#btngqcurrent").click(function () {
+            $("#linechartparent").show();
+            $.get('/yourarea/gq/currenttopfive', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var xarray=[];
+                var yarray1=[];
+                var yarray2=[];
+                var yarray3=[];
+                var yarray4=[];
+                var yarray5=[];
+                var yarray6=[];
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+
+                    yarray1.push(data.chartdata[i][1]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+                chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+            });
+        });
+
+        function chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+        }
+
+        function createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            type:'bar',
+                            label: 'GQ line',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+                        //2
+                        {
+                            type:'bar',
+                            label: 'GQ bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray2,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //3
+                        {
+                            type:'bar',
+                            label: 'GQ bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray3,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //4
+                        {
+                            type:'bar',
+                            label: 'GQ bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray4,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //5
+                        {
+                            type:'bar',
+                            label: 'GQ bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray5,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //6
+                        {
+                            type:'bar',
+                            label: 'GQ bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray6,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+    });
+
+</script>
+</html>
