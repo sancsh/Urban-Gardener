@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include admin/header.ejs %>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../">The Urban Gardener</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../admin/login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="../admin/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="https://www.google.com/">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="https://www.google.com/"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="https://www.google.com/"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="../admin/login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- /.navbar-header -->
+
+
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-sitemap fa-fw"></i> AIR QUALITY ANALYSIS<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id ="bnaqipast" href="../yourarea/aqi">PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bnaqicompare" href="../yourarea/aqi">COMPARE PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bnaqicurrent" href="../yourarea/aqi">COMPARE CURRENT AQI WITH TOP 5 PLACES</a>
+                            </li>
+
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-sitemap fa-fw"></i> GREEN QUOTIENT INDEX TRENDS<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id ="bnqqpast" href="../yourarea/gq">PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bngqcompare" href="../yourarea/gq">COMPARE PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bngqcurrent" href="../yourarea/gq">COMPARE CURRENT GQ WITH TOP 5 PLACES</a>
+                            </li>
+
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+
+                    <li>
+                        <a href="https://www.google.com/"><i class="fa fa-sitemap fa-fw"></i> VOLUNTEER QUOTIENT TRENDS<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id ="bnvqpast" href="../yourarea/vq">PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bnvqcompare" href="../yourarea/vq">COMPARE PAST TRENDS</a>
+                            </li>
+                            <li>
+                                <a id="bnvqcurrent" href="../yourarea/vq">COMPARE CURRENT GQ WITH TOP 5 PLACES</a>
+                            </li>
+
+
+                        </ul>
+                        <!-- /.nav-second-level -->
+
+
+                    </li>
+
+
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Know more about your area:Volunteer Quotient Analysis</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>Areas Updated!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="btnvqpast">
+                        <div class="panel-footer">
+                            <span class="pull-left">Past VQ Trends</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>Selected</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id ='btnvqcompare'>
+                        <div class="panel-footer">
+                            <span class="pull-left">Compare Past Trends</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">124</div>
+                                <div>Orders Placed!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id= 'btnvqcurrent'>
+                        <div class="panel-footer">
+                            <span class="pull-left">Current VQ vs Top 5</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-12">
+                <div class="btn-group btn-down">
+
+                    Select Area:
+
+                    <select id='areadropdown'>
+                        <option value="Golden Gate">Golden Gate</option>
+                        <option value="Napa">Napa</option>
+                        <option value="Noe Valley">Noe Valley</option>
+                        <option value="Outer Richmond">Outer Richmond</option>
+                        <option value="Chinatown">Chinatown</option>
+                        <option value="Union Square">Union Square</option>
+                        <option value="Western Addition">Western Addition</option>
+                        <option value="Russian Hill">Russian Hill</option>
+                        <option value="Union Square">Union Square</option>
+                        <option value="Peninsula">Peninsula</option>
+                        <option value="Cole Valley">Cole Valley</option>
+
+                    </select>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class ="col-md-6">
+                <div class="panel panel-default" id="pastvq" hidden>
+                    <div class="panel-heading">
+                        Past VQ Trends
+                    </div>
+                    <table width="100%" id="pastvqtable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+
+                <div class="panel panel-default" id="youvstop5" hidden>
+                    <div class="panel-heading">
+                        Compare Past VQ
+                    </div>
+                    <table width="100%" id="top5vqtable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+
+                <div class="panel panel-default" id="currentvq" hidden>
+                    <div class="panel-heading">
+                        Your Area vs Top 5
+                    </div>
+                    <table width="100%" id="currentvqtable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default" id="mark" hidden>
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Past Trends
+                        <div class="pull-right">
+                            <div class="btn-group">
+
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="https://www.google.com/">Action</a>
+                                    </li>
+                                    <li><a href="https://www.google.com/">Another action</a>
+                                    </li>
+                                    <li><a href="https://www.google.com/">Something else here</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="https://www.google.com/">Separated link</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="linechartparent" hidden>
+
+                    <canvas id="myLineChart" class="widgetcanvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+
+
+
+
+
+
+    </div>
+
+    <!-- /#page-wrapper -->
+</div>
+</div>
+
+
+
+
+
+</body>
+
+
+
+<script>
+
+
+
+    jQuery(document).ready(function () {
+
+
+
+        jQuery("#btnvqpast").click(function () {
+
+            $("#pastvq").show();
+            $("#currentvq").hide();
+            $("#youvstop5").hide();
+            $("#linechartparent").show();
+            $("#mark").show();
+
+            // element.style.visibility = true
+            window.alert(document.getElementById('areadropdown').value);
+            if(document.getElementById('areadropdown').value==undefined){
+                window.alert(document.getElementById('areadropdown').value);
+            }
+
+
+            $.get('/yourarea/vq/pasttrends', {data: document.getElementById('areadropdown').value}, function (data) {
+
+                var dataset = data.chartdata;
+                var xarray=[];
+                var yarray1=[];
+                // var yarray2=[];
+                //var yarray3=[];
+                //var yarray4=[];
+                //var yarray5=[];
+                //var yarray6=[];
+
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                }
+
+                for (var i in data.chartdata)
+                {
+                    xarray.push(data.chartdata[i][2]);
+                }
+
+                chartStepOneAQIPast(xarray,yarray1,charttype);
+
+                $('#pastvqtable').DataTable({
+                    select: true,
+                    active: true,
+                    data: dataset,
+                    destroy:true,
+                    ordering:false,
+                    columns: [
+                        {title: "Areas"},
+                        {title: "Current GQ"},
+                        {title: "Month"}
+                    ]
+                });
+            });
+
+
+        });
+
+        jQuery("#btnvqcompare").click(function () {
+
+            $("#pastvq").hide();
+            $("#currentvq").show();
+            $("#youvstop5").hide();
+            $("#linechartparent").show();
+
+            $.get('/yourarea/vq/trendtopfive', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var yarray1=[];
+                var yarray2=[];
+                var yarray3=[];
+                var yarray4=[];
+                var yarray5=[];
+                var yarray6=[];
+                var xarray=[];
+                var charttype ='line';
+                var dataset = data.chartdata;
+                for (var i in data.chartdata)
+                {
+                    yarray1.push(data.chartdata[i][1]);
+                    yarray2.push(data.chartdata[i][2]);
+                    yarray3.push(data.chartdata[i][3]);
+                    yarray4.push(data.chartdata[i][4]);
+                    yarray5.push(data.chartdata[i][5]);
+                    yarray6.push(data.chartdata[i][6]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+
+                chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+
+                $('#currentvqtable').DataTable({
+                    select: true,
+                    active: true,
+                    data: dataset,
+                    destroy: true,
+                    ordering:false,
+                    columns: [
+                        {title: "Month"},
+                        {title: "Peninsula"},
+                        {title: "Golden Gate"},
+                        {title: "Noe Valley"},
+                        {title: "Cole Valley"},
+                        {title: "Napa"}
+
+
+                    ]
+                });
+
+            });
+
+        });
+
+        jQuery("#btnvqcurrent").click(function () {
+
+            $("#pastvq").hide();
+            $("#currentvq").hide();
+            $("#youvstop5").show();
+            $("#linechartparent").show();
+            $.get('/yourarea/vq/currenttopfive', {data: document.getElementById('areadropdown').value}, function (data) {
+                debugger;
+                var xarray=[];
+                var yarray1=[];
+                var dataset = data.chartdata;
+                var charttype ='bar';
+                for (var i in data.chartdata)
+                {
+
+                    yarray1.push(data.chartdata[i][1]);
+                    xarray.push(data.chartdata[i][0]);
+                }
+
+                chartStepOneAQICurrent(xarray,yarray1,charttype);
+                $('#top5vqtable').DataTable({
+                    select: true,
+                    active: true,
+                    data: dataset,
+                    ordering:false,
+                    destroy: true,
+                    columns: [
+                        {title: "Areas"},
+                        {title: "Current GQ"},
+                        {title: "Month"}
+                    ]
+                });
+            });
+        });
+
+        function chartStepOneAQIPast(xarray,yarray1,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChartAQIPast(xarray,yarray1,charttype);
+        }
+
+        function createChartAQIPast(xarray,yarray1,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            //type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            data:yarray1,
+                            borderWidth: 1
+                        },
+                        //2
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+        function chartStepOne(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype);
+        }
+
+        function createChart(xarray,yarray1,yarray2,yarray3,yarray4,yarray5,yarray6,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+                        //2
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray2,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //3
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray3,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //4
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray4,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //5
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray5,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+                        //6
+                        {
+                            type:'bar',
+                            label: 'AQI bar',
+                            fillColor : "rgba(172,194,132,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray6,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+
+
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+        function chartStepOneAQICurrent(xarray,yarray1,charttype){
+
+            var currentWindowHeight = $(window).height()
+            var canvas = document.getElementById("myLineChart")
+            var chartHeight = currentWindowHeight - 400
+            var lineChartParent = document.getElementById('linechartparent')
+            canvas.width = lineChartParent.clientWidth;
+            canvas.height = chartHeight;
+            createChartAQICurrent(xarray,yarray1,charttype);
+        }
+
+        function createChartAQICurrent(xarray,yarray1,charttype)
+        {
+            var ctx = document.getElementById("myLineChart");
+
+            var myChart = new Chart(ctx, {
+                type:'bar',
+                data: {
+                    // labels: ["Year1", "Year2", "Year3", "Year5"],
+                    labels:xarray ,
+                    datasets: [
+                        {
+                            type:'bar',//try to change this
+                            label: 'AQI line',
+                            fillColor : "rgba(63,135,52,0.4)",
+                            strokeColor : "#ACC26D",
+                            pointColor : "#fff",
+                            pointStrokeColor : "#9DB86D",
+                            //data: [data.chartdata[0][0],data.chartdata[1][0],data.chartdata[2][0],data.chartdata[3][0]],
+                            data:yarray1,
+                            /*backgroundColor: [
+                             'rgba(255, 99, 132, 0.2)',
+                             'rgba(54, 162, 235, 0.2)',
+                             'rgba(255, 206, 86, 0.2)',
+                             'rgba(75, 192, 192, 0.2)',
+                             'rgba(153, 102, 255, 0.2)',
+                             'rgba(255, 159, 64, 0.2)'
+                             ],*/
+                            /*  borderColor: [
+                             'rgba(255,99,132,1)',
+                             'rgba(54, 162, 235, 1)',
+                             'rgba(255, 206, 86, 1)',
+                             'rgba(75, 192, 192, 1)',
+                             'rgba(153, 102, 255, 1)',
+                             'rgba(255, 159, 64, 1)'
+                             ],*/
+                            borderWidth: 1
+                        },
+                        //2
+                    ],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            myChart.datasets
+            $('#myLineChart').css("visibility", "visible");
+        }
+
+    });
+
+
+
+</script>
+</html>
